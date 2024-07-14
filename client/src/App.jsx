@@ -1,12 +1,28 @@
-import React from "react";
+import React from 'react';
+import { Route, Routes } from 'react-router-dom';
 
-const App=()=>{
-    return(
-        <div>
-            App
-        </div>
-    )
+import { Sidebar, Navbar } from './components';
+import { CampaignDetails, CreateCampaign, Home, Profile } from './pages';
+
+const App = () => {
+  return (
+    <div className="relative sm:-8 p-4 bg-[#13131a] min-h-screen flex flex-row">
+      <div className="sm:flex hidden mr-10 relative">
+        <Sidebar />
+      </div>
+
+      <div className="flex-1 max-sm:w-full max-w-[1280px] mx-auto sm:pr-5">
+        <Navbar />
+
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/create-campaign" element={<CreateCampaign />} />
+          <Route path="/campaign-details/:id" element={<CampaignDetails />} />
+        </Routes>
+      </div>
+    </div>
+  )
 }
-export default App;
-// 0xe7a7b33c448217ee2fb75dabe7f87d32f91f9b4a95c37883ec5e2404c0e6ec22
-// 0xE099E6B4cDc1C8455D338f45B7A1954720Ac13fD
+
+export default App
